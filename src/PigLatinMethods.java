@@ -67,14 +67,12 @@ public class PigLatinMethods {
 		String userString = inputString.toLowerCase();
 		char firstChar = userString.charAt(0);
 	
-		if ((firstChar == 'a') || (firstChar == 'e') || (firstChar == 'i') || 
-				(firstChar == 'o') || (firstChar == 'u') || (firstChar == 'y')) {
+		if (vowel(firstChar)) {
 			convertedString = userString + "way";
 		} else {
 			for (int i = 1; i < userString.length(); i++) {
 				char currentChar = userString.charAt(i);
-				if ((currentChar == 'a') || (currentChar == 'e') || (currentChar == 'i') || 
-						(currentChar == 'o') || (currentChar == 'u') || (currentChar == 'y')) {
+				if (vowel(currentChar)) {
 					String firstHalfString = userString.substring(i, userString.length());
 					String secondHalfString = userString.substring(0, i);
 					convertedString = firstHalfString + secondHalfString + "ay";
@@ -98,5 +96,10 @@ public class PigLatinMethods {
 		System.out.print("\nTranslate another line? (y/n): ");
 		String keepGoing = scnr.next();
 		return keepGoing;
+	}
+	
+	public static Boolean vowel(char Char) {
+		return (Char == 'a') || (Char == 'e') || (Char == 'i') || 
+				(Char == 'o') || (Char == 'u') || (Char == 'y'); 
 	}
 }
