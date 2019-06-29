@@ -8,7 +8,7 @@ public class PigLatinMethods {
 		Boolean alpha = false;
 		do {
 			while (!scnr.hasNextLine())
-				scnr.next();
+					scnr.next();
 			userString = scnr.nextLine().replaceAll("\\s+", " ").trim();
 			alpha = alphaString(userString);
 		} while (alpha == false);
@@ -49,28 +49,27 @@ public class PigLatinMethods {
 	}
 	
 	public static String getPunctuation(String userString) {
-		String pigString = "";
+		String punctuatedString = "";
 		char lastChar = userString.charAt(userString.length() - 1);
 		if (lastChar == '!' || lastChar == '.' || lastChar == '?' || 
 				lastChar == ',' || lastChar == ';') {
 			userString = userString.substring(0, userString.length() - 1);
-			pigString = convertString(userString);
-			pigString += lastChar; 
+			punctuatedString = convertString(userString);
+			punctuatedString += lastChar; 
 		} else {
-			pigString = convertString(userString);
+			punctuatedString = convertString(userString);
 		}
-		return pigString;
+		return punctuatedString;
 	}
 
 	public static String convertString(String inputString) {
-		String pigString = "";
+		String convertedString = "";
 		String userString = inputString.toLowerCase();
 		char firstChar = userString.charAt(0);
 	
 		if ((firstChar == 'a') || (firstChar == 'e') || (firstChar == 'i') || 
 				(firstChar == 'o') || (firstChar == 'u') || (firstChar == 'y')) {
-			pigString = userString + "way";
-
+			convertedString = userString + "way";
 		} else {
 			for (int i = 1; i < userString.length(); i++) {
 				char currentChar = userString.charAt(i);
@@ -78,12 +77,12 @@ public class PigLatinMethods {
 						(currentChar == 'o') || (currentChar == 'u') || (currentChar == 'y')) {
 					String firstHalfString = userString.substring(i, userString.length());
 					String secondHalfString = userString.substring(0, i);
-					pigString = firstHalfString + secondHalfString + "ay";
+					convertedString = firstHalfString + secondHalfString + "ay";
 					break;
 				}
 			}
 		}
-		return pigString;
+		return convertedString;
 	}
 
 	public static String restoreCase(String pigString, String stringCase) {
